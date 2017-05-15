@@ -1,0 +1,18 @@
+- const data = htmlWebpackPlugin.options.data
+
+html
+  head
+    title Portfolio
+  body
+    input#js-data.hidden(value = JSON.stringify(data))
+    .nav
+      a(href='#') experiments
+      a(href='#') projects
+      a(href='#') info
+    .content
+      #experiments
+        .grid
+          each experiment in data.experiments
+            a.sketch(href='#', data-sketch = experiment)
+              .item(data-sketch = experiment, data-bg = experiment.replace('js', 'png'))
+      #canvas-container

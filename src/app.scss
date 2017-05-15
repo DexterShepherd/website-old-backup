@@ -1,0 +1,36 @@
+body {
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
+
+.nav {
+  a {
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  padding-bottom: 20px;
+}
+
+#experiments {
+  .grid {
+    // display: flex;  
+    // flex-wrap: wrap;
+  }
+
+  .item {
+    border: 1px solid;
+    display: block;
+    max-width: 800px;
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+    border: none;
+  } 
+}
