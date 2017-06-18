@@ -14,7 +14,7 @@ module.exports = () => {
       document.addEventListener('stop_sketch', (e) => {
         p.remove()
       });
-      const canvas = p.createCanvas(800, 800);
+      const canvas = p.createCanvas(700, 700);
       canvas.parent('canvas-container');
       palette = palettes[4].palette;
       p.background(palette[0]);

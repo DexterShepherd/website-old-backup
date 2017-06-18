@@ -14,7 +14,7 @@ module.exports = () => {
         p.remove()
       });
 
-      const canvas = p.createCanvas(800, 800);
+      const canvas = p.createCanvas(700, 700);
       canvas.parent('canvas-container');
       palette = palettes[2].palette;
       p.background(240);

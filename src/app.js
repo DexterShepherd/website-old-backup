@@ -13,13 +13,32 @@ function main() {
   setBackgroundImages();
 
   bindClick('.sketch', (e) => {
-    const stopper = new Event('stop_sketch');
-    document.dispatchEvent(stopper);
-
-    let sketchId = e.target.getAttribute('data-sketch').replace('.js', '');
-    console.log(sketchId);
-    experiments[sketchId]();
+    const ele = e.target.parentNode;
+    setSelected(ele, '.sketch .item');
+    replaceSketch(ele)
   });
+}
+
+function setSelected(ele, selector) {
+  document.querySelectorAll(selector).forEach( e => e.classList.remove('selected'))
+  ele.classList.toggle('selected');
+}
+
+function replaceSketch(ele) {
+  const stopper = new Event('stop_sketch');
+  document.dispatchEvent(stopper);
+
+  const sketchId = ele.getAttribute('data-sketch').replace('.js', '');
+  let canvas = document.getElementById('canvas-container');
+  if ( canvas ) { canvas.parentNode.removeChild(canvas); }
+  
+  canvas = document.createElement("div");
+  canvas.id = 'canvas-container';
+  canvas.zIndex = 100;
+  ele.children[0].appendChild(canvas);
+
+  console.log(sketchId);
+  experiments[sketchId]();
 }
 
 function setBackgroundImages() {

@@ -13,6 +13,6 @@ html
       #experiments
         .grid
           each experiment in data.experiments
-            a.sketch(href='#', data-sketch = experiment)
+            a.sketch(href='javascript:void(0)', data-sketch = experiment)
               .item(data-sketch = experiment, data-bg = experiment.replace('js', 'png'))
-      #canvas-container
+                .overlay
