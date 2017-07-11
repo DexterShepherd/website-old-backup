@@ -6,6 +6,11 @@ body {
   display: none;
 }
 
+.no-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
 .nav {
   a {
     color: black;
@@ -17,12 +22,24 @@ body {
   padding-bottom: 20px;
 }
 
-#experiments {
-  .grid {
-    // display: flex;  
-    // flex-wrap: wrap;
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#canvas-container {
+  .stop {
+    position: absolute;
+    top: 10px;;
+    left: 10px;
+    z-index: 2;
   }
-  
+}
+
+
+
+#experiments {
   .overlay {
     width: 100%;
     height: 100%;
@@ -45,7 +62,13 @@ body {
     transition: height 0.5s;
     -webkit-transition: height 0.5s;
     overflow: hidden;
+
   } 
+
+  .title {
+    transition: background-color 0.5s;
+    color: rgba(255, 255, 255, 0); 
+  }
   
   .item:not(.selected):hover {
     height: 300px; 
@@ -53,13 +76,14 @@ body {
 
   .selected {
     height: 800px; 
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .title {
+      color: rgba(255, 255, 255, 1);
+    }
   }
 
-  .selected .overlay {
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-
-  #canvas-container {
-    padding: 50px;
-  }
 }

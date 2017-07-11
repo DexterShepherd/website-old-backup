@@ -9,7 +9,7 @@ module.exports = () => {
       document.addEventListener('stop_sketch', (e) => {
         p.remove()
       });
-      const canvas = p.createCanvas(700, 700);
+      const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
       canvas.parent('canvas-container');
       particles = [];
       p.noStroke();

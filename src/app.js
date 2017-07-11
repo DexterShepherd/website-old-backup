@@ -15,8 +15,10 @@ function main() {
   bindClick('.sketch', (e) => {
     const ele = e.target.parentNode;
     setSelected(ele, '.sketch .item');
-    replaceSketch(ele)
+    addSketch(ele)
   });
+
+  bindClick('.stop', closeSketch);
 }
 
 function setSelected(ele, selector) {
@@ -24,21 +26,23 @@ function setSelected(ele, selector) {
   ele.classList.toggle('selected');
 }
 
-function replaceSketch(ele) {
-  const stopper = new Event('stop_sketch');
-  document.dispatchEvent(stopper);
-
+function addSketch(ele) {
   const sketchId = ele.getAttribute('data-sketch').replace('.js', '');
   let canvas = document.getElementById('canvas-container');
-  if ( canvas ) { canvas.parentNode.removeChild(canvas); }
-  
-  canvas = document.createElement("div");
-  canvas.id = 'canvas-container';
-  canvas.zIndex = 100;
-  ele.children[0].appendChild(canvas);
-
-  console.log(sketchId);
+  canvas.classList.remove('hidden');
   experiments[sketchId]();
+  document.querySelector('body').classList.add('no-scroll')
+}
+
+function closeSketch() {
+  const stopper = new Event('stop_sketch');
+  document.dispatchEvent(stopper);
+  let canvas = document.getElementById('canvas-container');
+  if ( canvas ) { 
+    canvas.parentNode.removeChild(canvas);
+    canvas.classList.add('hidden');
+  }
+  document.querySelector('body').classList.remove('no-scroll')
 }
 
 function setBackgroundImages() {
