@@ -23,16 +23,32 @@ body {
 }
 
 canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -350px;
+  margin-left: -350px;
 }
 
 #canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  // background-color: rgba(0, 0, 0, 0.7);
+
   .stop {
-    position: absolute;
+    position: fixed;
     top: 10px;;
     left: 10px;
+    z-index: 2;
+  }
+
+  .restart {
+    position: fixed;
+    top: 10px;;
+    right: 10px;
     z-index: 2;
   }
 }
@@ -77,13 +93,11 @@ canvas {
   .selected {
     height: 800px; 
 
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.7);
-    }
 
     .title {
       color: rgba(255, 255, 255, 1);
     }
   }
-
 }
+
+

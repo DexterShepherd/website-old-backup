@@ -2,6 +2,7 @@
 
 html
   head
+    // script(src = "https://unpkg.com/feather-icons")
     title Portfolio
   body
     input#js-data.hidden(value = JSON.stringify(data))
@@ -11,10 +12,15 @@ html
       a(href='#') info
     .content
       #canvas-container.hidden
-        a.stop X
+        a.stop
+          i(data-feather = "x")
+        a.restart
+          i(data-feather = "repeat")
       #experiments
         .grid
           each experiment in data.experiments
             a.sketch(href='javascript:void(0)', data-sketch = experiment)
               .item(data-sketch = experiment, data-bg = experiment.replace('js', 'png'))
                 .overlay
+  // script.
+  //   feather.replace()

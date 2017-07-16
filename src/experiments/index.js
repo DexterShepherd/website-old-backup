@@ -9,7 +9,6 @@ module.exports = {
   'donut': require('./donut'),
   'flow_field': require('./flow_field'),
   'follower': require('./follower'),
-  'inauguration': require('./inauguration'),
   'particle_parabola': require('./particle_parabola'),
   'scan_lines': require('./scan_lines'),
   'scribble': require('./scribble'),

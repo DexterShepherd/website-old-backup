@@ -33,6 +33,10 @@ module.exports = {
         test: /\.png|.jpg|.json/,
         use: 'file-loader',
       },
+      {
+        test: /.svg/,
+        use: 'svg-url-loader',
+      },
     ]
   },
   devServer: {
