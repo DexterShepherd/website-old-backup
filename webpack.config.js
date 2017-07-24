@@ -47,7 +47,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Porfolio',
+      title: 'Dexter J Shepherd',
       hash: true,
       template: './src/index.pug', // Load a custom template (ejs by default see the FAQ for details)
       data
