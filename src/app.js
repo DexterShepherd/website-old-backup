@@ -1,4 +1,5 @@
 const p5 = require('p5');
+const moofx = require('moofx');
 const experiments = require('./experiments/index.js');
 const feather = require('../node_modules/feather-icons/dist/feather.js');
 
@@ -17,8 +18,7 @@ function setSelected(ele, selector) {
   ele.classList.toggle('selected');
 }
 
-function addSketch(ele) {
-  console.log('adding!')
+function addSketch(ele, fadeTime = 0) {
   const sketchId = ele.getAttribute('data-sketch').replace('.js', '')
   
   currentSketch = ele;
@@ -30,13 +30,29 @@ function addSketch(ele) {
     } else {
       container.style.color = "black"
     }
-
-    container.style.backgroundColor = "rgba(" + style.r + "," + style.g + "," + style.b + ", "  + style.a + ")"
+    const colorString = "rgb(" + style.r + ", " + style.g + ", " + style.b + ")"
+    moofx(container).animate({ 'background-color': colorString }, {
+      duration: fadeTime,
+      callback: () => {
+        experiments[sketchId].load();
+      }
+    })
     container.classList.remove('hidden');
   }
 
-  experiments[sketchId].load();
   document.querySelector('body').classList.add('no-scroll')
+}
+
+function nextSketch(ele) {
+  closeSketch(currentSketch);
+  const next = (data.experiments.indexOf(currentSketch.getAttribute('data-sketch')) + 1) % data.experiments.length
+  addSketch(document.querySelector("[data-sketch='" + data.experiments[next] + "']"), 500);
+}
+
+function prevSketch(ele) {
+  closeSketch(currentSketch);
+  const prev = (data.experiments.indexOf(currentSketch.getAttribute('data-sketch')) - 1 + data.experiments.length) % data.experiments.length
+  addSketch(document.querySelector("[data-sketch='" + data.experiments[prev] + "']"), 400);
 }
 
 function closeSketch() {
@@ -85,11 +101,33 @@ function bindClick(selector, handler) {
   });
 }
 
+function setupNav() {
+  bindClick('.experiments', () => {
+    document.querySelector('#experiments').classList.remove('hidden')
+    document.querySelector('#about').classList.add('hidden')
+    document.querySelector('#projects').classList.add('hidden')
+  });
+
+  bindClick('.about', () => {
+    document.querySelector('#experiments').classList.add('hidden')
+    document.querySelector('#about').classList.remove('hidden')
+    document.querySelector('#projects').classList.add('hidden')
+  });
+
+  // bindClick('.projects', () => {
+  //   document.querySelector('#experiments').classList.add('hidden')
+  //   document.querySelector('#about').classList.add('hidden')
+  //   document.querySelector('#projects').classList.remove('hidden')
+  // });
+}
 
 function init() {
   data = JSON.parse(document.getElementById('js-data').value);
+
   container = document.getElementById('canvas-container');
   feather.replace()
+
+  setupNav();
 
   setBackgroundImages();
 
@@ -101,6 +139,10 @@ function init() {
 
   bindClick('.stop', closeSketch);
   bindClick('.restart', restartSketch);
+  bindClick('.next', nextSketch);
+  bindClick('.prev', prevSketch);
+
+
 }
 
 if (document.readyState === 'complete' || document.readyState !== 'loading') {

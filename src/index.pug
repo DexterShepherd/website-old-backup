@@ -1,34 +1,31 @@
 - const data = htmlWebpackPlugin.options.data
 
+doctype html
 html
   head
-    // script(src = "https://unpkg.com/feather-icons")
     title Portfolio
   body
     input#js-data.hidden(value = JSON.stringify(data))
-    .nav
-      a(href='#') experiments
-      a(href='#') projects
-      a(href='#') info
     .content
-      #canvas-container.hidden
-        a.stop
-          i(data-feather = "x")
-        a.restart
-          i(data-feather = "repeat")
-      #experiments
+      include layouts/header.pug
+      #experiments.hidden
+        #canvas-container.hidden
+          a.stop
+            i(data-feather = "x")
+          a.restart
+            i(data-feather = "repeat")
+          a.next
+            i(data-feather = "chevron-right")
+          a.prev
+            i(data-feather = "chevron-left")
         .grid
           each experiment in data.experiments
             a.sketch(href='javascript:void(0)', data-sketch = experiment)
               .item(data-sketch = experiment, data-bg = experiment.replace('js', 'png'))
                 .overlay
-    .footer
-      a.github(href = "https://github.com/DexterShepherd", target = "_blank")
-        i(data-feather = "github")
-      a.instagram(href = "https://www.instagram.com/dexterwritescode", target = "_blank")
-        i(data-feather = "instagram")
-      a.twitter(href = "https://twitter.com/dexter_shepherd", target = "_blank")
-        i(data-feather = "twitter")
-      a.email( href = "mailto:dexterjshepherd@gmail.com")
-        i(data-feather = "mail")
+      #about
+        .bio
+          include:markdown-it pages/about.md
+        img.headshot(src= require('./data/headshot.jpg'))
+        img.bike(src= require('./data/bike.jpg'))
 
