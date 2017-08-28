@@ -1,7 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const TinyPngCompress = require('webpack-tinypng-compress')
 const path = require("path");
 const data = require('./data/data');
+const keys = require('./keys.json')
 
 module.exports = {
   entry: './src/app.js',
@@ -56,6 +58,10 @@ module.exports = {
       filename: 'app.css',
       disable: false,
       allChunks: true
+    }),
+    new TinyPngCompress({
+      key: keys.tinyPng, 
+      relativePath: path.resolve(__dirname, 'dist')
     })
   ]
 }
