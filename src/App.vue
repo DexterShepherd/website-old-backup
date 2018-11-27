@@ -33,6 +33,7 @@ body {
 
 #app {
   font-family: 'IBM Plex Sans', sans-serif;
+  font-style: italic;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
