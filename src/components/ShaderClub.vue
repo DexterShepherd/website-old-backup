@@ -3,7 +3,7 @@
     <h1>shader.club</h1>
     <div class='proj-desc'>
       <p>
-        Galley of fragment shader art made by Los Angele artists.
+        Galley of fragment shader art made by Los Angeles artists.
       </p>
       <p>
         Images by <a href="clickbecause.net">Mike Leisz</a>, James Anderson, <a href='http://www.jpyepez.com/'>JP Yepez</a>, and Dexter Shepherd.
