@@ -9,7 +9,7 @@
     </p>
 
     <p>
-    I'm currently teaching courses on web development and creative coding in the <a href="https://calarts.edu/"><strong>CalArts</strong></a> music technology program. Previously at <a href="https://avatarlabs.com"><strong>Avatar Labs</strong></a> and <a href="https://www.kadezne.com"><strong>Kadenze</strong></a>.
+    I'm currently teaching courses on web development and creative coding in the <a href="https://calarts.edu/"><strong>CalArts</strong></a> music technology program. Previously at <a href="http://avatarlabs.com/work"><strong>Avatar Labs</strong></a> and <a href="https://www.kadezne.com"><strong>Kadenze</strong></a>.
     </p>
 
     <p>
